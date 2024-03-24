@@ -7,13 +7,13 @@ export const signup = async (req, res) => {
     const { fullName, username, password, confirmPassword, gender } = req.body;
 
     if (password !== confirmPassword) {
-      res.status(400).json({ error: "Password don't match" });
+      return res.status(400).json({ error: "Password don't match" });
     }
 
     const user = await User.findOne({ username });
 
     if (user) {
-      res.status(400).json({ error: "username already exists" });
+      return res.status(400).json({ error: "username already exists" });
     }
 
     //HASH password here
@@ -29,7 +29,6 @@ export const signup = async (req, res) => {
       fullName,
       username,
       password: hashedPassword,
-      confirmPassword,
       gender,
       profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
     });
@@ -81,5 +80,11 @@ export const login = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-  res.send("logout");
+  try {
+    res.cookie("jwt", "", { maxAge: 0 });
+    res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+    console.log("Error in logout controller", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };
