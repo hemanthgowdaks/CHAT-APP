@@ -1,6 +1,7 @@
 //package imports
 import express from "express";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 //files import
 import authRoutes from "./routes/auth.routes.js"
@@ -15,6 +16,7 @@ dotenv.config();
 
 //middlewares
 app.use(express.json()); //to prase(convert) incomming request with json payload to js objects
+app.use(cookieParser());
 app.use("/api/auth",authRoutes);
 app.use("/api/messages", messageRoutes);
 
