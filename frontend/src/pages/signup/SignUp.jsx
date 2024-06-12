@@ -37,8 +37,8 @@ const SignUp = () => {
             </label>
             <input
               type="text"
-              placeholder="Enter Full Name"
-              className="input input-bordered input-primary w-full"
+              placeholder="John Doe"
+              className="w-full input input-bordered  h-10"
               value={inputs.fullName}
               onChange={(e) =>
                 setInputs({ ...inputs, fullName: e.target.value })
@@ -52,8 +52,8 @@ const SignUp = () => {
             </label>
             <input
               type="text"
-              placeholder="Enter username"
-              className="input input-bordered input-primary w-full"
+              placeholder="johndoe"
+              className="w-full input input-bordered h-10"
               value={inputs.username}
               onChange={(e) =>
                 setInputs({ ...inputs, username: e.target.value })
@@ -68,7 +68,7 @@ const SignUp = () => {
             <input
               type="password"
               placeholder="Enter Password"
-              className="input input-bordered input-primary w-full"
+              className="w-full input input-bordered h-10"
               value={inputs.password}
               onChange={(e) =>
                 setInputs({ ...inputs, password: e.target.value })
@@ -77,13 +77,13 @@ const SignUp = () => {
           </div>
 
           <div>
-            <label className="label p-2">
+            <label className="label">
               <span className="text-base label-text">Confirm Password</span>
             </label>
             <input
               type="password"
               placeholder="Confirm Password"
-              className="input input-bordered input-primary w-full"
+              className="w-full input input-bordered h-10"
               value={inputs.confirmPassword}
               onChange={(e) =>
                 setInputs({ ...inputs, confirmPassword: e.target.value })
@@ -106,7 +106,7 @@ const SignUp = () => {
 
           <div>
             <button
-              className="btn btn-md btn-block mt-2 btn-primary"
+              className="btn btn-block btn-sm mt-2 border border-slate-700"
               disabled={loading}
             >
               {loading ? (
